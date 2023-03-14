@@ -1,0 +1,49 @@
+# isAgreeSendMessagesOnEmail
+
+# For ikea
+# post code
+# isDelivery
+# first name
+# surname
+# city
+# street
+# house number
+# flat
+# email address
+# mobile number
+
+# for Royal Opera House
+# isDelivery
+# country/region
+# first name
+# last name = surname
+# Company (optional)
+# street (address)
+# house number (apartment) (optional)
+# flat
+# post code (optional)
+# email address
+# mobile number
+# city
+
+# for Waterstones
+# email address
+# isDelivery
+# first name
+# last name = surname
+# country
+# street (address)
+# house number (apartment)
+# flat
+# city
+# post code
+# isCheapestDeliveryMethod
+
+# for Etsy
+# email address
+# country
+# full name = first name + last name (surname)
+# street address = street + house number (apartment)
+# flat (optional)
+# city
+# postal code
