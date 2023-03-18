@@ -1,4 +1,4 @@
-from .custom_customer import CustomUser
+from .custom_user import CustomUser
 from .customer_settings import CustomerAddress, CustomerDictSettings, CustomerPaymentMethod
 
 __all__ = (

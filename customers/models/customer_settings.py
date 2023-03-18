@@ -1,14 +1,15 @@
 from django.db import models
-from .custom_customer import CustomUser
+from .custom_user import CustomUser
+from .date_process_abstract_model import DateProcessModel
 
 
-class CustomerDictSettings(models.Model):
+class CustomerDictSettings(DateProcessModel):
     """
     General settings of customer extension
     """
-    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="settings",
-                                 verbose_name="Customer's settings")
-    email_address = models.EmailField(unique=True, primary_key=True, null=False, blank=False,
+    customer = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="settings",
+                                    verbose_name="Customer's settings")
+    email_address = models.EmailField(null=False, blank=False,
                                       verbose_name="Customer's email address")
     first_name = models.CharField(null=False, blank=False, max_length=20, verbose_name="Customer's name")
     last_name = models.CharField(null=False, blank=False, max_length=30, verbose_name="Customer's last name")
@@ -28,7 +29,7 @@ class CustomerDictSettings(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class CustomerAddress(models.Model):
+class CustomerAddress(DateProcessModel):
     """
     Model describe customer's address
     """
@@ -44,7 +45,7 @@ class CustomerAddress(models.Model):
     postal_code = models.CharField(null=False, blank=False, max_length=20, verbose_name="Customer's postal code")
 
 
-class CustomerPaymentMethod(models.Model):
+class CustomerPaymentMethod(DateProcessModel):
     """
     Model describe customer's payment method credit card
     """
