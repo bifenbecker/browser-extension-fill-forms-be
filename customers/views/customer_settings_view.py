@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from customers.serializers import CustomerSettingsSerializer, CustomerSettingsCreateSerializer
 from customers.models import CustomerDictSettings
+from time import sleep
 
 
 class CustomerSettingsViewSet(ModelViewSet):

@@ -1,6 +1,7 @@
 from django.db import models
 from .custom_user import CustomUser
 from .date_process_abstract_model import DateProcessModel
+from .is_active_instance_model import IsActiveModel
 
 
 class CustomerDictSettings(DateProcessModel):
@@ -29,7 +30,7 @@ class CustomerDictSettings(DateProcessModel):
         return f"{self.first_name} {self.last_name}"
 
 
-class CustomerAddress(DateProcessModel):
+class CustomerAddress(DateProcessModel, IsActiveModel):
     """
     Model describe customer's address
     """
@@ -45,7 +46,7 @@ class CustomerAddress(DateProcessModel):
     postal_code = models.CharField(null=False, blank=False, max_length=20, verbose_name="Customer's postal code")
 
 
-class CustomerPaymentMethod(DateProcessModel):
+class CustomerPaymentCardMethod(DateProcessModel, IsActiveModel):
     """
     Model describe customer's payment method credit card
     """
@@ -53,4 +54,4 @@ class CustomerPaymentMethod(DateProcessModel):
                                           verbose_name="Customer's payment cards")
     card_number = models.CharField(null=False, blank=False, max_length=16,
                                    verbose_name="Customer's payment method card number")
-    expire_date = models.DateField(null=False, blank=False)
+    expire_date = models.DateTimeField(null=False, blank=False)
