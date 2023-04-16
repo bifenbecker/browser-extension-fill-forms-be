@@ -38,7 +38,7 @@ class CustomerAddress(DateProcessModel, IsActiveModel):
                                           verbose_name="Customer's addresses")
     country = models.CharField(null=False, blank=False, max_length=30, verbose_name="Country where customer lives")
     city = models.CharField(null=False, blank=False, max_length=20, verbose_name="City where customer lives")
-    street = models.CharField(null=False, blank=False, max_length=20, verbose_name="Street where customer lives")
+    street = models.CharField(null=False, blank=False, max_length=50, verbose_name="Street where customer lives")
     house_number = models.CharField(null=False, blank=False, max_length=10,
                                     verbose_name="House number customer's address")
     flat_number = models.PositiveIntegerField(null=True, blank=True, default=None,
