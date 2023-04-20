@@ -10,12 +10,12 @@ class CustomerDictSettings(DateProcessModel):
     """
     customer = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="settings",
                                     verbose_name="Customer's settings")
-    email_address = models.EmailField(null=False, blank=False,
+    email_address = models.EmailField(null=True, blank=True,
                                       verbose_name="Customer's email address")
-    first_name = models.CharField(null=False, blank=False, max_length=20, verbose_name="Customer's name")
-    last_name = models.CharField(null=False, blank=False, max_length=30, verbose_name="Customer's last name")
+    first_name = models.CharField(null=True, blank=True, max_length=20, verbose_name="Customer's name")
+    last_name = models.CharField(null=True, blank=True, max_length=30, verbose_name="Customer's last name")
 
-    mobile_number = models.CharField(null=False, blank=False, max_length=30, verbose_name="Customer's mobile number")
+    mobile_number = models.CharField(null=True, blank=True, max_length=30, verbose_name="Customer's mobile number")
     isAgreeSendMessagesOnEmail = models.BooleanField(default=False, verbose_name="Does customer agree on mailing list")
 
     def __str__(self):
@@ -36,14 +36,14 @@ class CustomerAddress(DateProcessModel, IsActiveModel):
     """
     customer_settings = models.ForeignKey(CustomerDictSettings, on_delete=models.CASCADE, related_name="addresses",
                                           verbose_name="Customer's addresses")
-    country = models.CharField(null=False, blank=False, max_length=30, verbose_name="Country where customer lives")
-    city = models.CharField(null=False, blank=False, max_length=20, verbose_name="City where customer lives")
-    street = models.CharField(null=False, blank=False, max_length=50, verbose_name="Street where customer lives")
-    house_number = models.CharField(null=False, blank=False, max_length=10,
+    country = models.CharField(null=True, blank=True, max_length=30, verbose_name="Country where customer lives")
+    city = models.CharField(null=True, blank=True, max_length=20, verbose_name="City where customer lives")
+    street = models.CharField(null=True, blank=True, max_length=50, verbose_name="Street where customer lives")
+    house_number = models.CharField(null=True, blank=True, max_length=10,
                                     verbose_name="House number customer's address")
     flat_number = models.PositiveIntegerField(null=True, blank=True, default=None,
                                               verbose_name="Flat number customer's address")
-    postal_code = models.CharField(null=False, blank=False, max_length=20, verbose_name="Customer's postal code")
+    postal_code = models.CharField(null=True, blank=True, max_length=20, verbose_name="Customer's postal code")
 
 
 class CustomerPaymentCardMethod(DateProcessModel, IsActiveModel):
@@ -52,6 +52,6 @@ class CustomerPaymentCardMethod(DateProcessModel, IsActiveModel):
     """
     customer_settings = models.ForeignKey(CustomerDictSettings, on_delete=models.CASCADE, related_name="payment_cards",
                                           verbose_name="Customer's payment cards")
-    card_number = models.CharField(null=False, blank=False, max_length=16,
+    card_number = models.CharField(null=True, blank=True, max_length=16,
                                    verbose_name="Customer's payment method card number")
-    expire_date = models.DateTimeField(null=False, blank=False)
+    expire_date = models.DateTimeField(null=True, blank=True)
