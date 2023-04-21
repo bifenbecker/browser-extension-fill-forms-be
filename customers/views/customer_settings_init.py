@@ -11,6 +11,6 @@ class CustomerSettingsInitView(APIView):
     def get(self, request):
         user = self.request.user
         settings = CustomerDictSettings.objects.create(customer=user)
-        CustomerAddress.objects.create(customer_settings=settings)
-        CustomerPaymentCardMethod.objects.create(customer_settings=settings)
+        CustomerAddress.objects.create(customer_settings=settings, is_active=True)
+        CustomerPaymentCardMethod.objects.create(customer_settings=settings, is_active=True)
         return Response(status=HTTP_201_CREATED)
