@@ -5,7 +5,7 @@ from .login_user_serializer import CustomUserLoginSerializer
 from .customer_serializer import CustomerSerializer
 from .customer_settings_serializer import CustomerSettingsSerializer
 from .customer_settings_create_serializer import CustomerSettingsCreateSerializer
-
+from .customer_statistic_serializer import CustomerStatisticSerializer, CustomerStatisticCreateSerializer
 
 __all__ = (
     "CustomUserCreateSerializer",
@@ -14,5 +14,7 @@ __all__ = (
     "CustomerSettingsSerializer",
     "CustomerSettingsCreateSerializer",
     "CustomerAddressSerializer",
-    "CustomerPaymentCardSerializer"
+    "CustomerPaymentCardSerializer",
+    "CustomerStatisticSerializer",
+    "CustomerStatisticCreateSerializer",
 )

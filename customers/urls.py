@@ -1,5 +1,6 @@
 from django.urls import path, include
-from customers.views import CustomerSettingsViewSet, CustomerAddressesView, CustomerPaymentsView, CustomerSettingsInitView
+from customers.views import CustomerSettingsViewSet, CustomerAddressesView, CustomerPaymentsView, \
+    CustomerSettingsInitView, CustomerStatisticViewSet
 
 urlpatterns = [
     path(r"auth/", include("djoser.urls")),
@@ -22,5 +23,9 @@ urlpatterns = [
         'post': 'create',
         'patch': 'partial_update',
         'delete': 'destroy',
+    })),
+    path(r"customer/statistic/", CustomerStatisticViewSet.as_view({
+        'get': 'list',
+        'post': 'create',
     }))
 ]
