@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Users</h1>
+<div class="container border border-dark rounded p-3">
+    <table id="users" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{% url 'statistic_to_user_url' id=user.id %}">{{ user.id }}</a></td>
+                <td>{{ user.email }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{% static 'js/users_script.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>User: {{ user.email }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-dark">Download as CSV</button>
+</form>
+<div class="container border border-dark rounded p-3">
+    <table id="sites" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>Site</th>
+            <th>General count</th>
+            <th>Success tries</th>
+            <th>Failed tries</th>
+            <th>Filled fields count</th>
+            <th>Average price</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for site in sites %}
+                <tr>
+                    <td>{{ site.name }}</td>
+                    <td>{{ site.general_count }}</td>
+                    <td>{{ site.success_count }}</td>
+                    <td>{{ site.failed_count }}</td>
+                    <td>{{ site.filled_fields }}</td>
+                    <td>{{ site.avg_price }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% for site in sites %}
+    <hr>
+    <h3>{{ site.name }}</h3>
+    <div class="container border border-dark rounded p-3">
+        <table id={{ site.name }} class="table table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>Field name</th>
+                <th>Successfully filled</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for field in site.fields %}
+                    <tr>
+                        <td>{{ field.name }}</td>
+                        <td>{{ field.count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endfor %}
+{% endblock %}
+
+{% block custom_script %}
+<script src="{% static 'js/user_detail_script.js' %}"></script>
+{% endblock %}
+
