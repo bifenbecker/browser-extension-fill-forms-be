@@ -24,7 +24,7 @@ class CustomerDictSettings(DateProcessModel):
     def get_full_name_customer(self) -> str:
         """
         Build string of first name and last name customer
-        :return: first name and last name
+        :return: first name and last nampip install python-dotenve
         :rtype: string
         """
         return f"{self.first_name} {self.last_name}"
